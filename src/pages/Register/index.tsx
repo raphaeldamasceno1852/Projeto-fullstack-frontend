@@ -25,7 +25,7 @@ const Register = () => {
   return (
      <div>
       <div>
-        <h2>Client_List</h2>
+        <h2>Client List</h2>
         <Link to="/" className="backBtn">
           {" "}
           Voltar
