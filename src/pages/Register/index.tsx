@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../Providers/userContext";
+import { UserContext } from "../../contexts/UserContext";
 import { IUserRequest } from "../../interfaces/user";
 import { registerSchema } from "../../schemas/UserSchemas";
 
