@@ -1,4 +1,4 @@
-import { IUserResponse } from "../users"
+import { IUserRequest } from "../user"
 
 export interface IUserLogin {
     email: string
@@ -7,5 +7,5 @@ export interface IUserLogin {
 
 export interface IValidation {
     token: string
-    user: IUserResponse
+    user: IUserRequest
 }

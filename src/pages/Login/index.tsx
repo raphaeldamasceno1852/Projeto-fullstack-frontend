@@ -2,9 +2,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../Providers/userContext";
+import { UserContext } from "../../contexts/UserContext";
 import { IUserLogin } from "../../interfaces/login";
-import loginSchema from "../../schemas/LoginSchemas";
+import loginSchema from "../../schemas/Login/LoginSchemas";
 
 
 const Login = () => {
@@ -22,6 +22,7 @@ const Login = () => {
   const onSubmit = async (data: IUserLogin) => {
     setLoading(true);
     userLogin(data, setLoading);
+    
   };
 
   return (
