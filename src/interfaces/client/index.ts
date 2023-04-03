@@ -1,5 +1,4 @@
 export interface IClientRequest {
-    length: number
     id: string
     fullname: string
     email: string
@@ -8,4 +7,11 @@ export interface IClientRequest {
     updatedAt: Date
     deletedAt: Date
     userId: string
+}
+
+export interface IClientUpdate {
+    id: string
+    fullname?: string
+    email?: string
+    telefone?: string
 }

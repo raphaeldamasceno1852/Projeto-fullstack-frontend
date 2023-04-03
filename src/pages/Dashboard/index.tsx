@@ -1,32 +1,30 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import ListClients from "../../components/ListClients";
 import { UserContext } from "../../contexts/UserContext";
+import { Header, Main, UserData } from "./style";
+import ClientContainer from "../../components/ClientsContainer";
 
 const Dashboard = () => {
   const { userLogout, user } = useContext(UserContext);
 
-// useEffect(()=> {
-//   loadUser()
-// },[loading])
 
   return (
     <>
       {user ? (
         <div>
-          <div>
+          <Header>
             <h2>Client List</h2>
-            <button onClick={userLogout}>Sair</button>
-          </div>
-          <div>
+            <button  onClick={userLogout}>Sair</button>
+          </Header>
+          <UserData>
             <h1>
               Olá {user.firstName} {user.lastName}
             </h1>
             <p> {user.email}</p>
-          </div>
-          <div>
-            <ListClients />
-          </div>
+          </UserData>
+          <Main>
+            <ClientContainer/>
+          </Main>            
         </div>
       ) : (
         <Navigate to="/" replace={true} />
