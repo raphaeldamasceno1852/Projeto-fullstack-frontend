@@ -2,13 +2,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { Form } from "../../components/Form/style";
+import { Container } from "../../components/container/style";
 import { UserContext } from "../../contexts/UserContext";
 import { IUserRequest } from "../../interfaces/user";
 import { registerSchema } from "../../schemas/UserSchemas";
+import Button from "../../components/Button";
 
 const Register = () => {
-  const [loading, setLoading] = useState(false)
-  const {userRegister} = useContext(UserContext)
+  const [loading, setLoading] = useState(false);
+  const { userRegister } = useContext(UserContext);
 
   const {
     register,
@@ -19,11 +22,11 @@ const Register = () => {
   });
 
   const onSubmit = async (data: IUserRequest) => {
-    userRegister(data, setLoading)
-  }
+    userRegister(data, setLoading);
+  };
 
   return (
-     <div>
+    <Container>
       <div>
         <h2>Client List</h2>
         <Link to="/" className="backBtn">
@@ -32,7 +35,7 @@ const Register = () => {
         </Link>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <h3>Crie sua conta</h3>
 
         <span> Rapido e grátis, vamos nessa</span>
@@ -44,8 +47,10 @@ const Register = () => {
           placeholder="Digite seu primeiro nome"
           {...register("firstName")}
         />
-        {errors.firstName && <p className="red"> {errors.firstName.message} </p>}
-       
+        {errors.firstName && (
+          <p className="red"> {errors.firstName.message} </p>
+        )}
+
         <label htmlFor="lastName">Sobrenome</label>
         <input
           id="lastName "
@@ -93,14 +98,12 @@ const Register = () => {
           <p className="red"> {errors.confirmPassword.message} </p>
         )}
 
-        <button type="submit" disabled={loading}>
-            {loading ? "Cadastrando..." : "Cadastrar"}
-        </button>
-  
-      </form>
-    </div>
-  )
-}
+        <Button variant="primary" type="submit" disabled={loading}>
+          {loading ? "Cadastrando..." : "Cadastrar"}
+        </Button>
+      </Form>
+    </Container>
+  );
+};
 
-
-export default Register
+export default Register;

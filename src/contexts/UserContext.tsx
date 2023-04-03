@@ -74,15 +74,13 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(true);
       const res = await api.post("/users", data);
       toast.success("Conta criada com sucesso!", {
-        theme: "dark",
         autoClose: 1500,
       }),
         navigate("/");
       setUser(res.data);
     } catch (error) {
       toast.error("Conta já cadastrada", {
-        theme: "dark",
-        autoClose: 1500,
+        autoClose: 1500
       });
     } finally {
       setLoading(false);
@@ -103,8 +101,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       navigate("/dashboard")
     } catch (error) {
       toast.error("Email ou senha incorretos", {
-        theme: "dark",
-        autoClose: 1500,
+        autoClose: 1500
       });
     } finally {
       setLoading(false);
