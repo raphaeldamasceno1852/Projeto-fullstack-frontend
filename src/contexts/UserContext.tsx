@@ -11,7 +11,7 @@ export const UserContext = createContext({} as IUserContext);
 interface IUserContext {
   user: IUserRequest | null;
   setUser: React.Dispatch<React.SetStateAction<IUserRequest | null>>;
-  clients: IClientRequest[];
+    clients: IClientRequest[];
   setClients: React.Dispatch<React.SetStateAction<IClientRequest[]>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
