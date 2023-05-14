@@ -2,7 +2,7 @@ import { IUserRequest } from "../user"
 
 export interface IUserLogin {
     email: string
-    password: string
+    userPassword: string
 }
 
 export interface IValidation {

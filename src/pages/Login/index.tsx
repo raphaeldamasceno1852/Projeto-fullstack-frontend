@@ -40,8 +40,8 @@ const Login = () => {
         {errors.email && <p className='red'> {errors.email.message} </p>}
 
         <label htmlFor='password'>Senha</label>
-        <input id='password' type='password' placeholder='Digite sua senha' {...register('password')} />
-        {errors.password && <p className='red'> {errors.password.message} </p>}
+        <input id='password' type='password' placeholder='Digite sua senha' {...register('userPassword')} />
+        {errors.userPassword && <p className='red'> {errors.userPassword.message} </p>}
   
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? "Aguarde..." : "Login"}
