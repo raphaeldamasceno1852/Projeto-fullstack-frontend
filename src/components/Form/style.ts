@@ -141,7 +141,7 @@ export const Form = styled.form`
     color: rgba(var(--grey-1),1);
     font-weight: var(--regular);
 
-    /* align-self: baseline; */
+    align-self: baseline;
 
     text-decoration: none;
     align-self: center;
