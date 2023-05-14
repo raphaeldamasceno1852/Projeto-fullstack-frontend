@@ -6,7 +6,7 @@ const loginSchema = yup
     email: yup
       .string()
       .required('Email é obrigatório'),
-    password: yup
+    userPassword: yup
       .string()
       .required('Senha é obrigatória')
   })

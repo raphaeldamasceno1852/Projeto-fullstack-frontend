@@ -112,6 +112,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setUser(null);
     navigate("/");
     localStorage.removeItem("@Client_list_token");
+    localStorage.removeItem("@Client_list_id");
   };
 
   return (
