@@ -29,10 +29,14 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
 
   const loadUser = async () => {
     const token = localStorage.getItem("@Client_list_token");
+
     if (token) {
       try {
         api.defaults.headers.common.Authorization = `Bearer ${token}`;
+
         const { data } = await api.get(`/users/profile`);
+        console.log(data);
+
         setClients(data.clients);
       } catch (error) {
         console.log(error);
@@ -41,7 +45,6 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
   };
 
   const registerClient = async (data: IClientRequest) => {
-    const token = localStorage.getItem("@Client_list_token");
 
     try {
       if (
@@ -49,7 +52,6 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
           (client) => client.email.toLowerCase() === data.email.toLowerCase()
         )
       ) {
-        api.defaults.headers.common.Authorization = `Bearer ${token}`;
         await api.post("/clients", data);
         toast.success("Cliente cadastrado com sucesso!", {
           autoClose: 1500,
@@ -61,34 +63,34 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
       console.log(error);
     }
   };
-  const updateClient = async (data: IClientUpdate, id:string) => {
-    const token = localStorage.getItem("@Client_list_token");
-        try {
-        api.defaults.headers.common.Authorization = `Bearer ${token}`;
-        await api.delete(`/clients/${id}`)
-        toast.success("Cliente atualizado com sucesso", {
-        autoClose: 1500,
-        });
-        const updatedClient = clients.map(client => {
-                if(client.id === id  ){
-                    return { ...client, ...data};
-                } else {
-                    return client
-                }
-            })
 
-            setClients(updatedClient);
-        } catch (error) {
-            console.log(error);
+  const updateClient = async (data: IClientUpdate, id: string) => {
+    const token = localStorage.getItem("@Client_list_token");
+    try {
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
+      await api.delete(`/clients/${id}`);
+      toast.success("Cliente atualizado com sucesso", {
+        autoClose: 1500,
+      });
+      const updatedClient = clients.map((client) => {
+        if (client.id === id) {
+          return { ...client, ...data };
+        } else {
+          return client;
         }
+      });
+
+      setClients(updatedClient);
+    } catch (error) {
+      console.log(error);
     }
-  
+  };
 
   const deleteClient = async (id: string) => {
     try {
       const token = localStorage.getItem("@Client_list_token");
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-      await api.delete(`/clients/${id}`)
+      await api.delete(`/clients/${id}`);
       toast.success("Cliente excluido com sucesso", {
         autoClose: 1500,
       });

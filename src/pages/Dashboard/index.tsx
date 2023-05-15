@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import ClientContainer from "../../components/ClientsContainer";
 import { UserContext } from "../../contexts/UserContext";
 import { Header, Main, UserData } from "./style";
-import ClientContainer from "../../components/ClientsContainer";
 
 const Dashboard = () => {
-  const { userLogout, user } = useContext(UserContext);
-
+  const { userLogout, user, loading } = useContext(UserContext);
 
   return (
     <>
@@ -14,7 +13,7 @@ const Dashboard = () => {
         <div>
           <Header>
             <h2>Client List</h2>
-            <button  onClick={userLogout}>Sair</button>
+            <button onClick={userLogout}>Sair</button>
           </Header>
           <UserData>
             <h1>
@@ -23,8 +22,8 @@ const Dashboard = () => {
             <p> {user.email}</p>
           </UserData>
           <Main>
-            <ClientContainer/>
-          </Main>            
+            <ClientContainer />
+          </Main>
         </div>
       ) : (
         <Navigate to="/" replace={true} />

@@ -11,7 +11,7 @@ export const UserContext = createContext({} as IUserContext);
 interface IUserContext {
   user: IUserRequest | null;
   setUser: React.Dispatch<React.SetStateAction<IUserRequest | null>>;
-    clients: IClientRequest[];
+  clients: IClientRequest[];
   setClients: React.Dispatch<React.SetStateAction<IClientRequest[]>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,14 +47,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       if (token) {
         try {
-          setLoading(true);
+          // setLoading(true);
           api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
           const { data } = await api.get("/users/profile");
           setUser(data);
           setClients(data.clients);
           if (currentRoute) {
-            navigate(currentRoute)
+            navigate(currentRoute);
           }
         } catch (error) {
           console.log(error);
@@ -80,7 +80,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setUser(res.data);
     } catch (error) {
       toast.error("Conta já cadastrada", {
-        autoClose: 1500
+        autoClose: 1500,
       });
     } finally {
       setLoading(false);
@@ -98,10 +98,10 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@Client_list_id", res.data.user.id);
       setUser(res.data.user);
       setClients(res.data.user.clients);
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (error) {
       toast.error("Email ou senha incorretos", {
-        autoClose: 1500
+        autoClose: 1500,
       });
     } finally {
       setLoading(false);

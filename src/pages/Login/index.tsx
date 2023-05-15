@@ -22,7 +22,6 @@ const Login = () => {
   });
 
   const onSubmit = async (data: IUserLogin) => {
-    setLoading(true);
     userLogin(data, setLoading);
   };
 
